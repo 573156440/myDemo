@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>EMS</title>
+	<style type="text/css">
+		#ems{
+			position: absolute;
+			left: 50%;
+			width: 400px;
+			/*height: auto;*/
+			margin-left: -200px;
+			background: lightGreen;
+			text-align: center;
+			min-height: 50px;
+			height: 500px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+		}
+		#ems input{
+			height: 25px;
+			margin-top: 10px;
+		}
+		#list{
+			background: lightBlue;
+		}
+		#list li{
+			text-align: left;
+		}
+	</style>
+
+</head>
+<body>
+<div id="ems">
+	<div>
+		<input type="text" id="code">
+		<input type="button" value="查询" id="btn">
+	</div>
+	<div id="list">
+	</div>
+</div>
+<script type="text/javascript" src="封装ajax.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		var btn=document.getElementById('btn');
+		btn.onclick=function(){
+			var code=document.getElementById('code').value;
+			console.log('code的数据类型'+typeof(code));
+			console.log(code);
+			// var data=JSON.parse(this.responseText); //服务器返回的json字符串转为json对象
+			ajax({
+				data:"",
+				dataType:"json",
+				type:"get",
+				url:"test.php?code="+code,        //07ems.php得到的是json字符串，需要JSON.parse()转json对象
+				asyn:"true",
+				success:function(d){    //正常从服务器获取到了数据
+						console.log('成功');
+						// console.log(data);
+	 					  // var data=JSON.parse(d);      //d为xhr.responseText
+	 					  console.log(d+'-----html中的d');
+	 					  console.log('d的数据类型'+typeof(d));   //为string数据类型
+	 					  var da=JSON.parse(d);
+	 					  console.log('da的数据类型'+typeof(da));  //转为JSON
+	 					  console.log('da的状态'+da.status);
+	 					  // console.log('xhr的状态'+xhr.status);   //xhr 未定义
+	                        if(da.status==0){           //表示json正常获取到了
+	                            var list=da.data.info.context;
+	                            var tag='';
+	                            for(var i= 0;i<list.length;i++){
+	                                var item=list[i];
+	                                var desc=item.desc;
+	                                var t=new Date();
+	                                t.setTime(item.time+'000');
+
+	                                var str= t.getFullYear()+'年'+(t.getMonth()+1)+'月'+t.getDate()+'日'+(t.getHours()>12?' 下午':' 上午')+t.getHours()%12+':'+t.getMinutes()+':'+t.getSeconds();
+	                                tag+='<li><div>'+str+'</div><div>'+item.desc+'</div></li>';
+	                            }
+	                            var list=document.getElementById('list');
+	                            list.innerHTML="";
+	                            var ul=document.createElement('ul');
+	                            ul.innerHTML = tag;
+	                            list.appendChild(ul);
+								}else{
+									var info= da.msg;
+	               					 document.getElementById('list').innerHTML=info;
+								}
+				},
+				failure:function(){           //没有正常从服务器获取到有用数据的情况
+						console.log('出错了');
+				}
+			});
+			// ajax(param);
+
+		}
+	}
+</script>
+</body>
+</html>

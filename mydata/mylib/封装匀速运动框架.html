@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            height: 100px;
+            width:100px;
+            background-color: pink;
+            position: absolute;
+            left: 0;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn200">按钮200</button>
+<button id="btn400">按钮400</button>
+<div id="box"></div>
+</body>
+<!--<script>-->
+    <!--var box=document.getElementById("box");-->
+    <!--var btn200=document.getElementById("btn200");-->
+    <!--var timer= null;-->
+    <!--btn200.onclick= function () {-->
+<!--//        clearInterval(timer);-->
+        <!--var aa=10;-->
+        <!--timer=setInterval(function(){-->
+            <!--if(box.offsetLeft>=700){-->
+                <!--clearInterval(timer);-->
+            <!--}-->
+            <!--box.style.left=box.offsetLeft+aa+"px";-->
+        <!--},30);-->
+    <!--}-->
+<!--</script>-->
+<script>
+    function $(id){return document.getElementById(id);}
+    var btn200=$("btn200");
+    var btn400=$("btn400");
+    var box=$("box");
+
+
+
+    btn200.onclick= function () {
+        animate(box,200);                //box不能加引号
+    }
+    btn400.onclick= function () {
+        animate(box,400);
+    }
+    function animate(obj,target){        //谁运动 运动多少
+            var speed = obj.offsetLeft<target? 10:-10; //为什么不能写target-obj.offsetleft>0 是因为三元运算不能写多了运算在里面吗.....
+            obj.timer=setInterval(function () {
+                var result=target-obj.offsetLeft;   //  target值不变obj.offsetleft会不断接近target的值
+                obj.style.left=obj.offsetLeft+speed+"px";
+
+                if(Math.abs(result)<10){
+                    clearInterval(obj.timer);
+                    obj.style.left=target+"px"
+                }
+            },30)
+//        }
+    }
+//    animate("btn200",200);
+//    animate("btn400",400);
+
+</script>
+</html>

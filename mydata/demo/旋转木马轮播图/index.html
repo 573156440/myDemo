@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>旋转木马图</title>
+    <link rel="stylesheet" href="css/css.css"/>
+    <!--<script src="js/animate.js"></script>-->
+    <style>
+        .wrap{width:1600px; margin:100px auto;}
+        .slide{
+            height:500px;
+            margin-left: 50px;
+            position: relative;
+            /*background: pink;*/
+        }
+        .slide li{
+            /*height: 200px;*/
+            position: absolute;
+            left: 200px;
+            top: 0;
+            opacity:0.5;
+        }
+        .slide li img{
+            width: 100%;
+        }
+        .arrow{
+            position: relative;
+            z-index: 100;
+            margin-top:200px;
+            opacity: 0;
+        }
+        .prev,
+        .next{
+            width: 76px;
+            height: 112px;
+            position: absolute;
+            left:50px;
+            top:200px;
+            background: url("images/prev.png") no-repeat;
+            z-index: 99;
+            cursor: pointer;
+            /*opacity: 1;*/
+        }
+        .next{
+            left: 1100px;
+            background:url("images/next.png") no-repeat;
+            z-index: 99;
+        }
+    </style>
+    <script>
+        window.onload= function () {
+
+
+            var wrap = document.getElementById("wrap");
+            var arrow= document.getElementById("arrow");
+            var slide= document.getElementById("slide");
+            var lis= document.getElementsByTagName("li");
+            var json = [
+
+                {   //  1
+                    width:400,
+                    top:20,
+                    left:50,
+                    opacity:0.2,
+                    z:2
+                },
+                {  // 2
+                    width:600,
+                    top:70,
+                    left:0,
+                    opacity:0.8,
+                    z:3
+                },
+                {   // 3
+                    width:800,
+                    top:100,
+                    left:200,
+                    opacity:1,
+                    z:4
+                },
+                {  // 4
+                    width:600,
+                    top:70,
+                    left:600,
+                    opacity:0.8,
+                    z:3
+                },
+                {   //5
+                    width:400,
+                    top:20,
+                    left:800,
+                    opacity:0.2,
+                    z:2
+                }
+            ];
+            //鼠标移入移出大图 三角半透明
+            wrap.onmouseover= function () {
+//                arrow.style.opacity=1;
+                animate(arrow,{opacity:0.5});
+            }
+            wrap.onmouseout= function () {
+                arrow.style.opacity=0;
+            }
+            //把json数组的数据给到5个li中
+            var spans=arrow.children;
+
+        change();
+
+
+            for(k in spans){
+                spans[k].onclick= function () {
+                    if (this.className=="prev"){
+                        //点击的左按钮  把json数组第一个去掉，放到最后一个。
+//                        json.push(json.shift());
+                        if(jieliu==false){
+                            change(false);
+                            jieliu=true;
+                        }
+                    }else{
+                        //点击的右按钮 把json数组 最后一个去掉，放到第一个
+//                        json.unshift(json.pop());
+                        if(jieliu==false){
+                        change(true);
+                            jieliu=true;
+                        }
+                    }
+
+                }
+            }
+
+    function change(flag) {
+        if(flag){                       //true点击的右键
+            json.unshift(json.pop());
+            console.log("right");
+        }else{
+            json.push(json.shift());       //false点击的左键
+            console.log("left");
+        }
+        for (var i = 0; i < json.length; i++) {
+            animate(lis[i], {
+                width: json[i].width,
+                top: json[i].top,
+                left: json[i].left,
+                opacity: json[i].opacity,
+                zIndex: json[i].z
+            }, function () {
+                jieliu = false;
+            });
+        }
+    }
+
+        }
+    </script>
+    <script src="js/animate.js"></script>
+
+</head>
+
+<body>
+<div class="wrap" id="wrap">
+    <div class="slide" id="slide">
+        <ul>
+            <li><img src="images/slidepic5.jpg" alt=""/></li>
+            <li><img src="images/slidepic6.jpg" alt=""/></li>
+            <li><img src="images/slidepic7.jpg" alt=""/></li>
+            <li><img src="images/slidepic8.jpg" alt=""/></li>
+            <li><img src="images/slidepic2.jpg" alt=""/></li>
+        </ul>
+        <div class="arrow" id="arrow">
+            <span class="prev"></span>
+            <span class="next"></span>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

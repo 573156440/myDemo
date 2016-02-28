@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src='http://apps.bdimg.com/libs/jquery/1.7.2/jquery.js'></script>
+        <script type="text/javascript">
+        //1从服务器获取数据
+        //2解析获取到的数据
+            $(function(){
+                $('#btnSearch').click(function(){
+                    var menu = $('#menu');
+                    menu.text("正在加载中...");
+                    //获取文本框的值
+                    var txt=$('#textSearch').val();
+                    //对用户输入的中文进行URL编码
+                    txt=encodeURIComponent(txt);
+                    //发送异步请求jsonp
+                    $.ajax({
+                        type:"get",
+                        url:"http://v.juhe.cn/weather/index?format=2&key=4f6555ece72446eb5380389b93c764b1&dtype=jsonp&cityname="+txt,
+                        dataType:"jsonp",
+                        success:function(data){
+                            console.log(data);
+                            document.write('<a href="#">test</a>');
+                            console.log(data.result.sk.temp+22222222222);
+                            if(data.resultcode != 200){
+                                menu.text('亲，没查到')
+                                return;
+                            }
+                            var all = $('<div class="all"></div>');
+                            menu.append(all);
+                            all.text(data.result.sk.temp+'℃');
+                        },
+                        error:function(){
+                            menu.text('错误');
+                        }
+                    });
+                })
+            })
+        </script>
+    </head>
+    <body>
+    <input type="text" alt="请输入要查询的城市名" id='textSearch'><button value='搜索' id='btnSearch'>搜索</button>
+    <div id='menu'></div>
+    </body>
+</html>

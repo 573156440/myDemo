@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        body{
+            padding:0;
+            margin:0;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+        #container{
+            width:600px;
+            height: 600px;
+            margin:0 auto;
+            background-color: #fff6f2;
+        }
+    </style>
+    <script src="konva.js"></script>
+    <script src="CircleText.js"></script>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script>
+        var box=document.getElementById('container');
+        //创建舞台
+        var stage=new Konva.Stage({
+            container:'container',
+//            width:window.innerWidth,
+//            height:window.innerHeight
+            width:box.offsetWidth,
+            height:box.offsetHeight
+        });
+        //创建层
+        //中心点坐标
+        var cenX = stage.width()/2;
+        var cenY= stage.height()/2;
+        //创建背景层
+        var bgLayer = new Konva.Layer();
+        stage.add(bgLayer);
+        //绘制背景
+        var innerRadius=250/2;  //内环半径
+        var outerRadius=220;
+        //创建背景内环虚线图
+        var innerCircle=new Konva.Circle({
+            x:cenX,
+            y:cenY,
+            radius:innerRadius,
+            stroke:'#ccc',
+            strokeWidth:4,
+            dash:[10,4]   //设置虚线 10px  4px
+        });
+        //把内环虚线圆添加到背景层中
+        bgLayer.add(innerCircle);
+        //创建背景的外环的虚线圆
+        var outerCircle = new Konva.Circle({
+            x:cenX,
+            y:cenY,
+            radius:outerRadius,
+            stroke:'#ccc',
+            strokeWidth:4,
+            dash:[10,4]
+        });
+        bgLayer.add(outerCircle);
+        //把背景中心圆形添加到层中
+        var cenCircleText=new CircleText({
+            x:cenX,
+            y:cenY,
+            innerRadius:132/2,
+            outerRadius:90,
+            innerStyle:'#525A82',
+            outerStyle:'#E1E1E1',
+            text:'地球'
+        });
+        cenCircleText.addToGroupOrLayer(bgLayer);
+        bgLayer.draw();
+
+        //计算圆的圆心坐标
+        var x0=cenX+innerRadius*Math.cos(-60*Math.PI/180);
+        var y0=cenY+innerRadius*Math.sin(-60*Math.PI/180);
+
+        //动画层的绘制
+        var animateLayer = new Konva.Layer();
+        stage.add(animateLayer);
+        //创建二环层的组
+        var L2Group = new Konva.Group({
+            x:cenX,
+            y:cenY
+        });
+        //添加二环的圆
+        //二环上的火星形状组
+        var L2_CircleText_Mars=new CircleText({
+            x:innerRadius*Math.cos(160*Math.PI/180),
+            y:innerRadius*Math.sin(160*Math.PI/180),
+            innerRadius:30,
+            outerRadius:40,
+            innerStyle:'#FACED6',
+            outerStyle:'#E1E1E1',
+            text:'火星'
+        });
+        L2_CircleText_Mars.addToGroupOrLayer(L2Group);
+        //添加二环的圆
+        //二环上的木星形状组
+        var L2_CircleText_Jupiter=new CircleText({
+            x:innerRadius*Math.cos(-60*Math.PI/180),
+            y:innerRadius*Math.sin(-60*Math.PI/180),
+            innerRadius:30,
+            outerRadius:40,
+            innerStyle:'orange',
+            outerStyle:'#E1E1E1',
+            text:'木星'
+        });
+        L2_CircleText_Jupiter.addToGroupOrLayer(L2Group);
+        //把第二层的组添加到动画层上去
+        animateLayer.add(L2Group);
+
+        //创建一个三环的组
+        var L3Group=new Konva.Group({
+            x:cenX,
+            y:cenY
+        });
+        //绘制三环圆
+        var L3_CircleText_Mercury=new CircleText({
+            x:outerRadius*Math.cos(60*Math.PI/180),
+            y:outerRadius*Math.sin(60*Math.PI/180),
+            innerRadius:40,
+            outerRadius:50,
+            innerStyle:'red',
+            outerStyle:'#E1E1E1',
+            text:'水星'
+        })
+        L3_CircleText_Mercury.addToGroupOrLayer(L3Group);
+        //把三环圆添加到动画层上
+        animateLayer.add(L3Group);
+        //动画层进行渲染
+        animateLayer.draw();
+        
+        var rotateAnglePerSecond=60;  //设置每秒旋转60度
+        //Konva的帧动画系统
+        var animate =new Konva.Animation(function (frame) {
+            var rotateAngle= rotateAnglePerSecond*frame.timeDiff/1000;   //timerDiff为上一帧和当前帧时间差，单位ms
+            L2Group.rotate(rotateAngle);   //  角度 不是弧度。
+            //拿到二环上所有的圆，内部组进行反向旋转，使文字正常显示
+            L2Group.getChildren().each(function(item,index){
+                item.rotate(-rotateAngle);
+            });
+            // 三环逆向旋转
+            L3Group.rotate(-rotateAngle);
+            //三环的子元素进行反向旋转
+//            L3Group.getChildren().each(function (item,index) {
+//                item.rotate(rotateAngle) //设置元素进行旋转度数
+//            })
+        },animateLayer);
+        animate.start();
+
+        //Konva事件系统和Jquery一样
+        //给动画绑定一个鼠标移上去事件
+        animateLayer.on('mouseover', function () {
+            //设置旋转角度
+            rotateAnglePerSecond=10;   //慢速旋转
+        });
+        animateLayer.on('mouseout', function () {
+            //鼠标移开旋转加快
+            rotateAnglePerSecond=60;
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的百度搜索jquery--jsonp</title>
+	<style type="text/css">
+    *{margin:0 ;padding:0;}
+		#search{
+			position: absolute;
+			left: 50%;
+			width: 400px;
+			height: auto;
+			margin-left: -200px;
+			background: lightGreen;
+			text-align: center;
+			min-height: 50px;
+			height: 500px;
+			overflow-y: scroll;
+			overflow-x: hidden;
+		}
+		#search input{
+			height: 25px;
+			margin-top: 10px;
+		}
+		#list{
+			background: lightBlue;
+		}
+        #list ul{list-style: none;}
+
+		#list li{
+			text-align: left;
+		}
+	</style>
+
+</head>
+<body>
+<div id="search">
+	<div>
+		<input type="text" id="keyWords" autocomplete=off>
+		<input type="button" value="百度一下" id="btn">
+	</div>
+	<div id="list">
+	</div>
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.10.1/jquery.min.js"></script>   
+<script type="text/javascript">
+
+$(function(){
+    $('#keyWords').keyup(function(e){
+            var kd=$('#keyWords').val();
+            console.log(kd);
+            // 百度搜索的查询接口
+            var url = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+kd;
+            qurrySUG(url);
+    })
+})
+function qurrySUG(url){
+    $('#list').innerHTML='';
+    console.log(url);
+    $.ajax({
+        type:'get',
+        async:true,
+        url:url,
+        dataType:'jsonp',
+        jsonp:'cb',
+        // jsonpCallback:'callback',
+        success:function(data){
+            console.log(data.s);
+            var tag='<ul>';
+            for(var i=0;i<data.s.length;i++){
+                tag+='<li>'+data.s[i]+'</li>';
+            }
+            tag+='</ul>';
+            $('#list').html(tag).show();
+            $('#list').find('li').hover(function(){
+                $(this).css('background','lightGreen');
+            },function(){
+                $(this).css('background','lightBlue');
+            });
+        },
+        error:function(){console.log('fail');}
+    });
+}
+
+
+</script>
+</body>
+</html>

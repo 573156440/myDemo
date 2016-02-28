@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8" />
+<title>目标伪类选择符 E:target_CSS参考手册_web前端开发参考手册系列</title>
+<meta name="author" content="Joy Du(飘零雾雨), dooyoe@gmail.com, www.doyoe.com" />
+<style>
+/**{margin:0;padding:0;}*/
+.wrap{position:relative;width: 450px;height: 200px;background-color: silver;}
+.wrap .hd{width:100%;height: 40px;background-color: pink;}
+.wrap .bd{width:100%;height: 160px;background-color: blue;}
+.wrap .hd a{display:block;height: 20px;width:150px;text-align:center;line-height:40px;text-decoration: none;float: left;}
+
+#panel1,#panel2,#panel3{height: 160px;width:100%;background-color: orange;display: none;position: absolute;top: 40px;left: 0;}
+#panel1:target{display: block;}
+#panel2:target{display: block;}
+#panel3:target{display: block;}
+#panel1{display: block;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hd nav">
+    <a href="#panel1">前往区块1</a>
+    <a href="#panel2">前往区块2</a>
+    <a href="#panel3">前往区块3</a>
+  </div>
+  <div class="bd">
+    <div id="panel1" class="current panel">
+       <h2>111111</h2>
+       <p>区块一</p>
+    </div>
+    <div id="panel2" class="panel">
+        <h2>2222222</h2>
+        <p>区块二</p>
+    </div>
+     <div id="panel3" class="panel">
+        <h2>3333333</h2>
+        <p>区块三</p>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- <div class="container">
+  <div class="left"></div><div class="right" ></div>
+</div> -->
+</body>
+</html>

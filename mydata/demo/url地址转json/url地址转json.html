@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    <script type="text/javascript">
+  function serilizeUrl(url) {
+    var urlObject = {};
+    if (/\?/.test(url)) {
+        var urlString = url.substring(url.indexOf("?") + 1);
+        var urlArray = urlString.split("&");
+        for (var i = 0, len = urlArray.length; i < len; i++) {
+            var urlItem = urlArray[i];
+            var item = urlItem.split("=");
+            urlObject[item[0]] = item[1];
+        }
+        console.log(urlObject)
+        return urlObject;
+    }
+    return null;
+}
+serilizeUrl('www.baidu.com/itm.html?a=1&b=2&c&d=4&e');
+
+    </script>
+    </body>
+</html>
