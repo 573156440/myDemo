@@ -55,6 +55,7 @@ span{
     <script type="text/javascript">
 
 var timerCotrol=function(str){
+    var defaultTime='2016/02/29';
     var aa=2;
     var timerBox=document.getElementsByClassName("timerBox")[0];
     var timerList=timerBox.getElementsByClassName('num');
@@ -66,7 +67,7 @@ var timerCotrol=function(str){
               var h=Math.floor(times/60/60);
               var m=Math.floor(times/60%60);
               var s=Math.floor(times%60);
-              console.log(h+"-"+m+"-"+s);
+              // console.log(h+"-"+m+"-"+s);
               timerList[0].innerHTML=h>9?parseInt(h/10):0;
               timerList[1].innerHTML=h%10;
               timerList[2].innerHTML=m>9?parseInt(m/10):0;
@@ -77,21 +78,22 @@ var timerCotrol=function(str){
             },1000)
     return {
             gettimes:function(){return timer;},     //通过定义接口来访问
-            newtimes:function(){return clearInterval(timer);}  //通过定义接口来修改,,
+            newtimes:function(){console.log("清除定时器");return clearInterval(timer);}  //通过定义接口来修改,,传参secret=new
           };
 };
-  var setTime=timerCotrol('2015/12/21');
+  var setTime=timerCotrol('2016/01/01');
 //要在函数外部修改函数内部的变量times值。
 
 var changeTime=function(){
     var btn=document.getElementsByClassName("btn")[0];
     var importTime =document.getElementsByClassName("import")[0];
     btn.onclick=function(){
-     setTime.newtimes();        //通过timeControl函数闭包，在此函数可以修改timeControl函数内部变量（来停止定时器）
+      setTime.newtimes();
+     //setTime.newtimes();        //通过timeControl函数闭包，在此函数可以修改timeControl函数内部变量（来停止定时器）
             var str=importTime.value;
             var newStr=str.substr(0,4)+"/"+str.substr(4,2)+"/"+str.substr(6,2);
              // 用外部函数访问私有变量方法实现
-             console.log(newStr)
+             // console.log(newStr)
              timerCotrol(newStr);
     }
 }

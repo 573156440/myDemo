@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>JS原型链及基本继承</title>
+</head>
+<body>
+    <div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+function Animal() {
+    this.name = 'cat';
+}
+Animal.prototype = {
+    aat: function() {
+        alert('动物有吃东西的公有方法')
+    }
+}
+
+console.log(Animal.prototype)                           //原型对象
+console.log(Animal.prototype.__proto__)                 //总对象--boss
+console.log(Animal.prototype.__proto__.prototype)       //undefined
+
+function Dog() {
+    this.name = 'dog'; //不同的属性重新定义，公有的属性，直接用Animal prototype中的。
+}
+Dog.prototype = new Animal();
+var xiaohua = new Dog();
+console.log(xiaohua.name);
+console.log(xiaohua.eat);
+console.log(Dog.prototype);
+console.log(Dog.prototype.__proto__)     //  实例通过隐藏的__proto__属性指向构造函数的原型对象
+console.log(xiaohua);                    //对象，为Dog构造函数的实例
+console.log(xiaohua.constructor);        //为函数对象。
+console.log(xiaohua.constructor.prototype)     //总对象--boss
+console.log(xiaohua.prototype);          //undefined
+</script>
+<h2>原型链</h2>
+<span>constructor都有prototype,当我们访问对象某一属性时（访问xiaohua的eat属性），会先在自身对象查找，若找不到，则在其构造函数和构造函数的上的prototype查找（xiaohua构造函数对应的原型对象--这里即父构造函数Animal的实例对象，实例会拷贝构造函数的所有属性，在其隐藏属性__proto__中找到了eat方法。如果这里也找不到-比如Animal构造函数中eat写错了,就继续往上找到了Animal.prototype.__proto__,结果还是没有，返回undefined）</span>
+<hr>
+<div>详细请看控制台console</div>
