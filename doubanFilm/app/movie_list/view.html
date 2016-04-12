@@ -1,0 +1,52 @@
+<h1 class="page-header">{{title}}</h1>
+<h2 ng-if="message">{{message}}</h2><!--如果message有值就显示-->
+<div class="list-group">
+  <a href="#/detail/{{item.id}}" class="list-group-item" ng-repeat="item in subjects">
+  	<span class="badge">评分：{{item.rating.average}}</span>
+	<div class="media">
+		<div class="media-left">
+		    <img class="media-object" ng-src="{{item.images.small}}" alt="item.title">
+		</div>
+		<div class="media-body">
+		  <h2 class="media-heading"><strong>{{item.title}}</strong></h2>
+		  <!-- <p>导演：<span ng-repeat="d in item.directors">{{d.name}}<span ng-if="!$last">、</span>
+		  </span></p> -->
+		  <p>导演：<span ng-repeat="d in item.directors">{{d.name + ($last?"":"、")}}</span></p>
+		  <p>类型:<strong>{{item.genres.join("、")}}</strong></p>
+		</div>
+	</div>
+  </a>
+</div>
+<!-- loading动画  放在遮罩层里面-->
+<div class="mask" ng-show="loading">
+	<div class="spinner">
+	  <div class="spinner-container container1">
+	    <div class="circle1"></div>
+	    <div class="circle2"></div>
+	    <div class="circle3"></div>
+	    <div class="circle4"></div>
+	  </div>
+	  <div class="spinner-container container2">
+	    <div class="circle1"></div>
+	    <div class="circle2"></div>
+	    <div class="circle3"></div>
+	    <div class="circle4"></div>
+	  </div>
+	  <div class="spinner-container container3">
+	    <div class="circle1"></div>
+	    <div class="circle2"></div>
+	    <div class="circle3"></div>
+	    <div class="circle4"></div>
+	  </div>
+	</div>
+</div>
+<div ng-show="!loading">
+	<p>总共：{{totalCount}}条记录&nbsp&nbsp-&nbsp&nbsp第{{currentPage}}/{{totalPages}}页</p>
+	<!-- 分页 -->
+	<nav ng-show="!loading">
+	  <ul class="pager">
+	    <li><button ng-click="go(currentPage-1)" ng-class="{disabled:currentPage<=1}">Prev</button></li>
+	    <li><button ng-click="go(currentPage+1)" ng-class="{disabled:currentPage>=totalPages}">Next</button></li>
+	  </ul+
+	</nav>
+</div>

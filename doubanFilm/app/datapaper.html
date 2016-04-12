@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+    <script type="text/javascript">
+    window.onload=function(){
+    	 // 12345
+    	var current = 3;
+    	var total =3;
+    	var show = 5;
+    	var region = Math.floor(show/2);  //当前页左右各有几个
+    	var begin = current -region;
+    	begin = begin<1?1:begin;
+    	var end = begin + show;
+    	if(end>total){
+    		end = total+1;
+    		begin=end-show;
+    		begin = begin<1?1:begin;
+    	}
+    	var container = document.getElementsByClassName('pagination')[0];
+    	//append上一页
+    	var prevElement = document.createElement('li');
+    	prevElement.innerHTML = '<a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>';
+    	if(current == 1){
+    		prevElement.classList.add('disabled');
+    	}
+    	container.appendChild(prevElement);
+
+    	for (var i = begin; i < end; i++) {
+    	    console.log(i);
+    	    var liElement = document.createElement('li');
+    	    if(i==current){
+    	    	liElement.classList.add('active');
+    	    }
+    		liElement.innerHTML = '<a href="#">'+i+'</a>';
+    		container.appendChild(liElement);
+    	}
+    	//append上一页
+    	var nextElement = document.createElement('li');
+    	nextElement.innerHTML = '<a href="#" aria-label="Previous"><span aria-hidden="true">&raquo;</span></a>';
+    	if(current == total){
+    		prevElement.classList.add('disabled');
+    	}
+    	container.appendChild(nextElement);
+    }
+
+    </script>
+
+
+<nav>
+  	<ul class="pagination">
+  	 <!--  <li>
+  	    <a href="#" aria-label="Previous">
+  	      <span aria-hidden="true">&laquo;</span>
+  	    </a>
+  	  </li>
+  	  <li><a href="#">1</a></li>
+  	  <li><a href="#">2</a></li>
+  	  <li><a href="#">3</a></li>
+  	  <li><a href="#">4</a></li>
+  	  <li><a href="#">5</a></li>
+  	  <li>
+  	    <a href="#" aria-label="Next">
+  	      <span aria-hidden="true">&raquo;</span>
+  	    </a>
+  	  </li> -->
+  	</ul>
+</nav>
+    </body>
+</html>

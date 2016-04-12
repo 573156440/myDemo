@@ -1,0 +1,40 @@
+<!-- <div class="jumbotron">
+  <h1>{{movie.title}}</h1>
+  <img ng-src="{{movie.images.large}}" alt="{{movie.title}}">
+  <p>{{movie.summary}}</p>
+</div> -->
+
+<div class="media bg-primary">
+  <div class="media-left">
+      <img class="media-object" ng-src="{{movie.images.large}}" alt="{{movie.title}}">
+  </div>
+  <div class="media-body" id="shit">
+  	<h1>{{movie.title}}</h1>
+    <h3 class="media-heading" ng-show="!loading">电影摘要：</h3>
+    <p>{{movie.summary}}</p>
+  </div>
+</div>
+
+<!-- loading动画  放在遮罩层里面-->
+<div class="mask" ng-show="loading">
+	<div class="spinner">
+	  <div class="spinner-container container1">
+	    <div class="circle1"></div>
+	    <div class="circle2"></div>
+	    <div class="circle3"></div>
+	    <div class="circle4"></div>
+	  </div>
+	  <div class="spinner-container container2">
+	    <div class="circle1"></div>
+	    <div class="circle2"></div>
+	    <div class="circle3"></div>
+	    <div class="circle4"></div>
+	  </div>
+	  <div class="spinner-container container3">
+	    <div class="circle1"></div>
+	    <div class="circle2"></div>
+	    <div class="circle3"></div>
+	    <div class="circle4"></div>
+	  </div>
+	</div>
+</div>

@@ -1,0 +1,234 @@
+{
+  "count": 3,
+  "start": 0,
+  "total": 22,
+  "subjects": [
+    {
+      "rating": {
+        "max": 10,
+        "average": 9.4,
+        "stars": "50",
+        "min": 0
+      },
+      "genres": [
+        "喜剧",
+        "动作",
+        "动画"
+      ],
+      "title": "疯狂动物城",
+      "casts": [
+        {
+          "alt": "http://movie.douban.com/celebrity/1017930/",
+          "avatars": {
+            "small": "http://img3.douban.com/img/celebrity/small/4815.jpg",
+            "large": "http://img3.douban.com/img/celebrity/large/4815.jpg",
+            "medium": "http://img3.douban.com/img/celebrity/medium/4815.jpg"
+          },
+          "name": "金妮弗·古德温",
+          "id": "1017930"
+        },
+        {
+          "alt": "http://movie.douban.com/celebrity/1013760/",
+          "avatars": {
+            "small": "http://img3.douban.com/img/celebrity/small/18772.jpg",
+            "large": "http://img3.douban.com/img/celebrity/large/18772.jpg",
+            "medium": "http://img3.douban.com/img/celebrity/medium/18772.jpg"
+          },
+          "name": "杰森·贝特曼",
+          "id": "1013760"
+        },
+        {
+          "alt": "http://movie.douban.com/celebrity/1049501/",
+          "avatars": {
+            "small": "http://img3.douban.com/img/celebrity/small/1410696326.11.jpg",
+            "large": "http://img3.douban.com/img/celebrity/large/1410696326.11.jpg",
+            "medium": "http://img3.douban.com/img/celebrity/medium/1410696326.11.jpg"
+          },
+          "name": "伊德里斯·艾尔巴",
+          "id": "1049501"
+        }
+      ],
+      "collect_count": 106302,
+      "original_title": "Zootopia",
+      "subtype": "movie",
+      "directors": [
+        {
+          "alt": "http://movie.douban.com/celebrity/1286985/",
+          "avatars": {
+            "small": "http://img3.douban.com/img/celebrity/small/1457505519.94.jpg",
+            "large": "http://img3.douban.com/img/celebrity/large/1457505519.94.jpg",
+            "medium": "http://img3.douban.com/img/celebrity/medium/1457505519.94.jpg"
+          },
+          "name": "拜伦·霍华德",
+          "id": "1286985"
+        },
+        {
+          "alt": "http://movie.douban.com/celebrity/1324037/",
+          "avatars": {
+            "small": "http://img3.doubanio.com/img/celebrity/small/1456810684.78.jpg",
+            "large": "http://img3.doubanio.com/img/celebrity/large/1456810684.78.jpg",
+            "medium": "http://img3.doubanio.com/img/celebrity/medium/1456810684.78.jpg"
+          },
+          "name": "瑞奇·摩尔",
+          "id": "1324037"
+        },
+        {
+          "alt": "http://movie.douban.com/celebrity/1304069/",
+          "avatars": {
+            "small": "http://img3.doubanio.com/img/celebrity/small/1456810614.66.jpg",
+            "large": "http://img3.doubanio.com/img/celebrity/large/1456810614.66.jpg",
+            "medium": "http://img3.doubanio.com/img/celebrity/medium/1456810614.66.jpg"
+          },
+          "name": "杰拉德·布什",
+          "id": "1304069"
+        }
+      ],
+      "year": "2016",
+      "images": {
+        "small": "http://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2315672647.jpg",
+        "large": "http://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2315672647.jpg",
+        "medium": "http://img3.doubanio.com/view/movie_poster_cover/spst/public/p2315672647.jpg"
+      },
+      "alt": "http://movie.douban.com/subject/25662329/",
+      "id": "25662329"
+    },
+    {
+      "rating": {
+        "max": 10,
+        "average": 7.3,
+        "stars": "40",
+        "min": 0
+      },
+      "genres": [
+        "剧情",
+        "爱情"
+      ],
+      "title": "哪一天我们会飞",
+      "casts": [
+        {
+          "alt": "http://movie.douban.com/celebrity/1173971/",
+          "avatars": {
+            "small": "http://img3.doubanio.com/img/celebrity/small/40056.jpg",
+            "large": "http://img3.doubanio.com/img/celebrity/large/40056.jpg",
+            "medium": "http://img3.doubanio.com/img/celebrity/medium/40056.jpg"
+          },
+          "name": "杨千嬅",
+          "id": "1173971"
+        },
+        {
+          "alt": "http://movie.douban.com/celebrity/1006502/",
+          "avatars": {
+            "small": "http://img3.douban.com/img/celebrity/small/1630.jpg",
+            "large": "http://img3.douban.com/img/celebrity/large/1630.jpg",
+            "medium": "http://img3.douban.com/img/celebrity/medium/1630.jpg"
+          },
+          "name": "林海峰",
+          "id": "1006502"
+        },
+        {
+          "alt": "http://movie.douban.com/celebrity/1352154/",
+          "avatars": {
+            "small": "http://img3.douban.com/img/celebrity/small/1447036519.02.jpg",
+            "large": "http://img3.douban.com/img/celebrity/large/1447036519.02.jpg",
+            "medium": "http://img3.douban.com/img/celebrity/medium/1447036519.02.jpg"
+          },
+          "name": "苏丽珊",
+          "id": "1352154"
+        }
+      ],
+      "collect_count": 3375,
+      "original_title": "哪一天我們會飛",
+      "subtype": "movie",
+      "directors": [
+        {
+          "alt": "http://movie.douban.com/celebrity/1309385/",
+          "avatars": {
+            "small": "http://img3.doubanio.com/img/celebrity/small/1393590693.36.jpg",
+            "large": "http://img3.doubanio.com/img/celebrity/large/1393590693.36.jpg",
+            "medium": "http://img3.doubanio.com/img/celebrity/medium/1393590693.36.jpg"
+          },
+          "name": "黄修平",
+          "id": "1309385"
+        }
+      ],
+      "year": "2015",
+      "images": {
+        "small": "http://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2271330538.jpg",
+        "large": "http://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2271330538.jpg",
+        "medium": "http://img3.doubanio.com/view/movie_poster_cover/spst/public/p2271330538.jpg"
+      },
+      "alt": "http://movie.douban.com/subject/25852263/",
+      "id": "25852263"
+    },
+    {
+      "rating": {
+        "max": 10,
+        "average": 7.6,
+        "stars": "40",
+        "min": 0
+      },
+      "genres": [
+        "动作",
+        "奇幻",
+        "冒险"
+      ],
+      "title": "神战：权力之眼",
+      "casts": [
+        {
+          "alt": "http://movie.douban.com/celebrity/1076051/",
+          "avatars": {
+            "small": "http://img3.douban.com/img/celebrity/small/1368693740.25.jpg",
+            "large": "http://img3.douban.com/img/celebrity/large/1368693740.25.jpg",
+            "medium": "http://img3.douban.com/img/celebrity/medium/1368693740.25.jpg"
+          },
+          "name": "尼古拉·科斯特-瓦尔道",
+          "id": "1076051"
+        },
+        {
+          "alt": "http://movie.douban.com/celebrity/1040500/",
+          "avatars": {
+            "small": "http://img3.doubanio.com/img/celebrity/small/406.jpg",
+            "large": "http://img3.doubanio.com/img/celebrity/large/406.jpg",
+            "medium": "http://img3.doubanio.com/img/celebrity/medium/406.jpg"
+          },
+          "name": "杰拉德·巴特勒",
+          "id": "1040500"
+        },
+        {
+          "alt": "http://movie.douban.com/celebrity/1325896/",
+          "avatars": {
+            "small": "http://img3.douban.com/img/celebrity/small/1410910563.02.jpg",
+            "large": "http://img3.douban.com/img/celebrity/large/1410910563.02.jpg",
+            "medium": "http://img3.douban.com/img/celebrity/medium/1410910563.02.jpg"
+          },
+          "name": "布伦顿·思韦茨",
+          "id": "1325896"
+        }
+      ],
+      "collect_count": 894,
+      "original_title": "Gods of Egypt",
+      "subtype": "movie",
+      "directors": [
+        {
+          "alt": "http://movie.douban.com/celebrity/1027346/",
+          "avatars": {
+            "small": "http://img3.douban.com/img/celebrity/small/9385.jpg",
+            "large": "http://img3.douban.com/img/celebrity/large/9385.jpg",
+            "medium": "http://img3.douban.com/img/celebrity/medium/9385.jpg"
+          },
+          "name": "亚历克斯·普罗亚斯",
+          "id": "1027346"
+        }
+      ],
+      "year": "2016",
+      "images": {
+        "small": "http://img3.douban.com/view/movie_poster_cover/ipst/public/p2324130130.jpg",
+        "large": "http://img3.douban.com/view/movie_poster_cover/lpst/public/p2324130130.jpg",
+        "medium": "http://img3.douban.com/view/movie_poster_cover/spst/public/p2324130130.jpg"
+      },
+      "alt": "http://movie.douban.com/subject/26662345/",
+      "id": "26662345"
+    }
+  ],
+  "title": "正在上映的电影-北京"
+}
